@@ -1,6 +1,12 @@
 # SimplateJS
 SimplateJS is a logicless templating system for JavaScript.  It weighs in at under 1KB and can be used when the big guys are way to much overhead or you just need something... well, simple. There are no external dependencies.
 
+#History
+* v0.2.0 
+    * Added support for AMD/CommonJS
+    * Added QUnit tests
+* v0.1.0 - Initial commit
+
 #Examples
 Link to SimplateJS in your HTML:
 
