@@ -18,21 +18,21 @@ Create a new template using the **set** method:
 
     simplate.set( 'table.tr', '<tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>' );
 
-There are two ways to use the **get** method.
+There are three ways to use the **get** method.
 
-If you want to manipulate the template manually you can retrieve it using **get** like this:
+* Manipulate the template manually:
 
     var results = simplate.get('table.tr');
     console.log( results );
     // <tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>
 
-If you want Simplate to parse a single data object into your template, use the **get** method like so:
+* Parse a single data object:
 
     var results = simplate.get( 'table.tr', {'firstname' : 'John', 'lastname' : 'Doe' });
     console.log( results );
     // <tr><td>John</td><td>Doe</td></tr>
 
-Or multiple data objects by passing an array of objects:
+* Parse multiple data objects by passing an array of objects:
 
      // Sample data from API
      var data = [
