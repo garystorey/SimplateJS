@@ -1,0 +1,28 @@
+{
+  "name": "SimplateJS",
+  "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garystorey/SimplateJS"
+  },
+  "bugs": {
+    "url": "https://github.com/garystorey/SimplateJS/issues"
+  },
+  "description": "Super simple logicless templating",
+  "author": {
+    "name": "Gary Storey",
+    "email": "garystorey@gmail.com",
+    "url": "https://github.com/garystorey"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.9.0",
+    "gulp-notify": "^2.1.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.2"
+  }
+}
