@@ -20,25 +20,22 @@ Create a new template using the **set** method:
 
 There are three ways to use the **get** method.
 
-* Manipulate the template manually:
-
+Manipulate the template manually:
 
     var results = simplate.get('table.tr');
     console.log( results );
-    // <tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>
+    //<tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>
 
-* Parse a single data object:
-
+Parse a single data object:
 
     var results = simplate.get( 'table.tr', {'firstname' : 'John', 'lastname' : 'Doe' });
     console.log( results );
     // <tr><td>John</td><td>Doe</td></tr>
 
-* Parse multiple data objects by passing an array of objects:
+Parse multiple data objects by passing an array of objects:
 
-
-     // Sample data from API
-     var data = [
+    // Sample data from API
+    var data = [
        {'firstname' : 'John', 'lastname' : 'Doe' },
        {'firstname' : 'Jane', 'lastname' : 'Doe' },
        {'firstname' : 'Jim', 'lastname' : 'Doe' }
@@ -48,6 +45,7 @@ There are three ways to use the **get** method.
     // <tr><td>John</td><td>Doe</td></tr>
     // <tr><td>Jane</td><td>Doe</td></tr>
     // <tr><td>Jim</td><td>Doe</td></tr>
+
 
 #TODO's
  * ~~add tests~~ Added QUnit tests
