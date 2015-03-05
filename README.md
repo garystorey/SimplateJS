@@ -22,17 +22,20 @@ There are three ways to use the **get** method.
 
 * Manipulate the template manually:
 
+
     var results = simplate.get('table.tr');
     console.log( results );
     // <tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>
 
 * Parse a single data object:
 
+
     var results = simplate.get( 'table.tr', {'firstname' : 'John', 'lastname' : 'Doe' });
     console.log( results );
     // <tr><td>John</td><td>Doe</td></tr>
 
 * Parse multiple data objects by passing an array of objects:
+
 
      // Sample data from API
      var data = [
