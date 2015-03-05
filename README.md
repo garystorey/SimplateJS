@@ -20,7 +20,13 @@ If you want to manipulate the template manually you can retrieve it using **get*
     console.log( results );
     // <tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>
 
-If you want Simplate to parse a data object into your template, use the **get** method like so:
+If you want Simplate to parse a single data object into your template, use the **get** method like so:
+
+    var results = simplate.get( 'table.tr', {'firstname' : 'John', 'lastname' : 'Doe' });
+    console.log( results );
+    // <tr><td>John</td><td>Doe</td></tr>
+
+Or multiple data objects by passing an array of objects:
 
      // Sample data from API
      var data = [
@@ -34,9 +40,9 @@ If you want Simplate to parse a data object into your template, use the **get** 
     // <tr><td>Jane</td><td>Doe</td></tr>
     // <tr><td>Jim</td><td>Doe</td></tr>
 
-#TODO
- * add tests
- * add CommonJS , AMD support
+#TODO's
+ * ~~add tests~~ Added QUnit tests
+ * ~~add CommonJS , AMD support~~  Added support via UMD 
 
 #More Info
 [http://garystorey.com/2015/02/24/super-simple-javascript-templating/](http://garystorey.com/2015/02/24/super-simple-javascript-templating/)
