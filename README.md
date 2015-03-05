@@ -43,6 +43,7 @@ Or multiple data objects by passing an array of objects:
 #TODO's
  * ~~add tests~~ Added QUnit tests
  * ~~add CommonJS , AMD support~~  Added support via UMD 
+ * Update documentation for use in Node/CommonJS
 
 #More Info
 [http://garystorey.com/2015/02/24/super-simple-javascript-templating/](http://garystorey.com/2015/02/24/super-simple-javascript-templating/)
