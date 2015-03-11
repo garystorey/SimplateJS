@@ -5,9 +5,7 @@ var gulp    = require( 'gulp' ),
     jshint  = require( 'gulp-jshint' ),
     qunit   = require( 'gulp-qunit' ),
     plumbr  = require( 'gulp-plumber' ),
-    run     = require( 'run-sequence'),
-    clean   = require( 'gulp-clean');
-
+    run     = require( 'run-sequence');
 
 var renameOptions = { suffix : '.min' };
 
