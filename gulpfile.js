@@ -3,18 +3,23 @@ var gulp    = require( 'gulp' ),
     concat  = require( 'gulp-concat' ),
     rename  = require( 'gulp-rename' ),
     jshint  = require( 'gulp-jshint' ),
-    plumbr  = require( 'gulp-plumber' );
+    qunit   = require( 'gulp-qunit' ),
+    plumbr  = require( 'gulp-plumber' ),
+    run     = require( 'run-sequence'),
+    clean   = require( 'gulp-clean');
+
 
 var renameOptions = { suffix : '.min' };
 
-var jssource        ='./src/**.*',
-    jsfilename      = 'simplate.js',
-    jsdestination   ='./dist';
+var testpage = './tests/test.html',
+    testjs = './tests/tests.js';
 
-gulp.task('js', function() {
+var jssource        = './src/simplate.js',
+    jsdestination   = './dist';
+
+gulp.task( 'js', function() {
   return gulp.src( jssource )
     .pipe( plumbr() )
-    .pipe( concat( jsfilename ) )
     .pipe( jshint() )
     .pipe( jshint.reporter( 'default' ) )
     .pipe( gulp.dest( jsdestination ) )
@@ -23,8 +28,19 @@ gulp.task('js', function() {
     .pipe( gulp.dest( jsdestination ) )
 });
 
+gulp.task( 'test', function() {
+  return gulp.src( testpage )
+        .pipe( qunit() );
+});
+
+
+gulp.task( 'testAndjs', function() {
+  run('js','test');
+});
+
 gulp.task( 'watch', function() {
-  gulp.watch( jssource , ['js'] );
+  gulp.watch( testjs , ['test'] );
+  gulp.watch( jssource , ['testAndjs'] );
 });
 
 gulp.task( 'default', ['watch']);
