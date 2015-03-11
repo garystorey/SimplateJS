@@ -16,14 +16,21 @@
    * setTemplate ( string, string );
   ************/
   function setTemplate( name, data ) {
-    if ( !getTemplate( name ) ) { cache[ name ] = data; return true; } else { return false; }
+    if ( ! hasTemplate( name ) ) { cache[ name ] = data; return true; } else { return false; }
   }
 
   /************
    * getTemplate ( string [, array ] );
   ************/
   function getTemplate( name, data ) {
-    return ( data && parseTemplate( name, data )) || ( cache[ name ] || '' );
+    return ( data && parseTemplate( name, data )) || ( cache[ name ] || false );
+  }
+
+  /************
+  * hasTemplate ( string );
+  ************/
+  function hasTemplate( name ) {
+    return !!( cache[ name ] );
   }
 
   /************
@@ -58,7 +65,8 @@
 
   return {
     get : getTemplate,
-    set : setTemplate
+    set : setTemplate,
+    has : hasTemplate
   };
 
 }));
