@@ -1,6 +1,6 @@
 {
   "name": "SimplateJS",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/garystorey/SimplateJS"
@@ -18,11 +18,12 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.10",
-    "gulp-concat": "^2.5.2",
     "gulp-jshint": "^1.9.0",
     "gulp-notify": "^2.1.0",
     "gulp-plumber": "^0.6.6",
+    "gulp-qunit": "^1.2.1",
     "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^1.0.2"
+    "gulp-uglify": "^1.0.2",
+    "run-sequence": "^1.0.2"
   }
 }
