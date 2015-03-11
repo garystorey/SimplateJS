@@ -2,7 +2,10 @@
 SimplateJS is a logicless templating system for JavaScript.  It weighs in at under 1KB and can be used when the big guys are way to much overhead or you just need something... well, simple. There are no external dependencies.
 
 #History
-* v0.2.0 
+* v0.3.0
+    * Added automated qunit test
+    * Added **has** method
+* v0.2.0
     * Added support for AMD/CommonJS
     * Added QUnit tests
 * v0.1.0 - Initial commit
@@ -12,11 +15,16 @@ Link to SimplateJS in your HTML:
 
     <script src="/path/to/simplate.min.js"></script>
 
-SimplateJS has two methods: **get** and **set**.
+SimplateJS has three methods: **get** , **set** and **has**.
 
 Create a new template using the **set** method:
 
     simplate.set( 'table.tr', '<tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>' );
+
+Check to see if a template exists using the **has** method:
+
+    simplate.has( 'table.tr');
+    // true
 
 There are three ways to use the **get** method.
 
@@ -28,7 +36,7 @@ Manipulate the template manually:
 
 Parse a single data object:
 
-    var results = simplate.get( 'table.tr', {'firstname' : 'John', 'lastname' : 'Doe' });
+    var results = simplate.get( 'table.tr', {'firstname' : 'John', 'lastname' : 'Doe' } );
     console.log( results );
     // <tr><td>John</td><td>Doe</td></tr>
 
@@ -49,7 +57,7 @@ Parse multiple data objects by passing an array of objects:
 
 #TODO's
  * ~~add tests~~ Added QUnit tests
- * ~~add CommonJS , AMD support~~  Added support via UMD 
+ * ~~add CommonJS , AMD support~~  Added support via UMD
  * Publish on npm
  * Update documentation for use in Node/CommonJS
 
