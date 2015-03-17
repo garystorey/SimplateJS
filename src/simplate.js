@@ -20,10 +20,14 @@
   }
 
   /************
-   * getTemplate ( string [, array ] );
+   * getTemplate ( string [, array/object ] );
   ************/
-  function getTemplate( name, data ) {
-    return ( data && parseTemplate( name, data )) || ( cache[ name ] || false );
+  function getTemplate( name , data ){
+    var tmpl =  (name.indexOf('#') === 0 ) ?
+                document.getElementById( name.replace('#','') ).innerText :
+                ( cache[name] || false );
+
+    return ( data && parseTemplate( tmpl, data ) ) || tmpl;
   }
 
   /************
@@ -34,26 +38,26 @@
   }
 
   /************
-   * parseTemplate ( string [, array ] );
+   * parseTemplate ( string [, array/object ] );
   ************/
-  function parseTemplate( name, data ) {
+  function parseTemplate( template, data ) {
     var i = 0, len, str='';
     if ( data.constructor === Array ) {
       len = data.length;
       for(; i < len; i++){
-        str += replaceValues( name, data[i] );
+        str += replaceValues( template, data[i] );
       }
     } else {
-      str = replaceValues( name, data );
+      str = replaceValues( template, data );
     }
     return str;
   }
 
+
   /************
    * replaceValues ( string , object );
   ************/
-  function replaceValues( name, data ) {
-    var template = getTemplate(name);
+  function replaceValues( template, data ) {
     if ( template ){
       return template.replace(/{{([a-z_]+[a-z0-9_]*)}}/gi, function( tag, val ) {
         return data[ val ] ? data[ val ]  : '';
