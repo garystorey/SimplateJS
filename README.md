@@ -4,6 +4,7 @@ SimplateJS is a logicless templating system for JavaScript.  It weighs in at und
 ##Changelog
 
 * ``0.3.0`` :
+    * Added support for "get" by ID
     * Added automated QUnit test
     * Added new **has** method
 * ``0.2.0`` : 
@@ -32,7 +33,7 @@ simplate.has( 'table.tr');
 // true
 ```
 
-There are three ways to use the **get** method.
+There are four ways to use the **get** method.
 
 Manipulate the template manually:
 
@@ -62,6 +63,18 @@ console.log( results );
 // <tr><td>John</td><td>Doe</td></tr>
 // <tr><td>Jane</td><td>Doe</td></tr>
 // <tr><td>Jim</td><td>Doe</td></tr>
+```
+
+Read the template from an HTML ID.
+```html
+<script type="text/template" id="tableRow">
+  <tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>
+</script>
+```
+```javascript
+var results = simplate.get( '#tableRow', {'firstname' : 'John', 'lastname' : 'Doe' } );
+console.log( results );
+// <tr><td>John</td><td>Doe</td></tr>
 ```
 
 ##TODO's
