@@ -28,5 +28,6 @@ QUnit.test( "Testing SimplateJS: ", function( assert ) {
   assert.strictEqual( simplate.get( 'div' ), testString , " - GET (basic) returns template." );
   assert.strictEqual( simplate.get( 'div', testObject ), testObjectString , " - GET with data returns template correctly." );
   assert.strictEqual( simplate.get( 'div', testArray ), testArrayString , " - GET with data array returns template correctly." );
+  assert.strictEqual( simplate.get( '#testSimplate', testObject ), testObjectString , " - GET from Element returns template correctly." );
 
 });
