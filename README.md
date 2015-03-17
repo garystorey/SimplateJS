@@ -1,16 +1,17 @@
 # SimplateJS
 SimplateJS is a logicless templating system for JavaScript.  It weighs in at under 1KB and can be used when the big guys are way to much overhead or you just need something... well, simple. There are no external dependencies.
 
-#History
-* v0.3.0
-    * Added automated qunit test
-    * Added **has** method
-* v0.2.0
+##Changelog
+
+* ``0.3.0`` :
+    * Added automated QUnit test
+    * Added new **has** method
+* ``0.2.0`` : 
     * Added support for AMD/CommonJS
     * Added QUnit tests
-* v0.1.0 - Initial commit
+* ``0.1.0`` :  Initial commit
 
-#Examples
+##Examples
 Link to SimplateJS in your HTML:
 
     <script src="/path/to/simplate.min.js"></script>
@@ -55,14 +56,14 @@ Parse multiple data objects by passing an array of objects:
     // <tr><td>Jim</td><td>Doe</td></tr>
 
 
-#TODO's
+##TODO's
  * ~~add tests~~ Added QUnit tests
  * ~~add CommonJS , AMD support~~  Added support via UMD
  * Publish on npm
  * Update documentation for use in Node/CommonJS
 
-#More Info
+##More Info
 [http://garystorey.com/2015/02/24/super-simple-javascript-templating/](http://garystorey.com/2015/02/24/super-simple-javascript-templating/)
 
-#License
+##License
 Released under MIT license
