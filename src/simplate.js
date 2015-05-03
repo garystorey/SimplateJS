@@ -1,7 +1,8 @@
 (function ( root, factory ) {
-  if ( typeof define === "function" && define.amd ) {
+  'use strict';
+  if ( typeof define === 'function' && define.amd ) {
     define( factory );
-  } else if( typeof module === "object" && module.exports ) {
+  } else if( typeof module === 'object' && module.exports ) {
     module.exports = ( root.simplate = factory() );
   } else {
     root.simplate = factory();
@@ -24,10 +25,18 @@
   ************/
   function getTemplate( name , data ){
     var tmpl =  (name.indexOf('#') === 0 ) ?
-                document.getElementById( name.replace('#','') ).innerText :
+                getDomElement( name ) :
                 ( cache[name] || false );
 
     return ( data && parseTemplate( tmpl, data ) ) || tmpl;
+  }
+
+  function getDomElement( name ) {
+    name = name.replace('#','') + '';
+    if ( document && name ) {
+      return document.getElementById( name ).innerText;
+    }
+    return false;
   }
 
   /************
@@ -53,14 +62,13 @@
     return str;
   }
 
-
   /************
    * replaceValues ( string , object );
   ************/
   function replaceValues( template, data ) {
     if ( template ){
       return template.replace(/{{([a-z_]+[a-z0-9_]*)}}/gi, function( tag, val ) {
-        return data[ val ] ? data[ val ]  : '';
+        return  data[ val ] ? data[ val ]  : '{{'+val+'}}';
       });
     } else {
       return '';
