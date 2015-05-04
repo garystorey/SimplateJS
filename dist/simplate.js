@@ -17,7 +17,7 @@
    * setTemplate ( string, string );
   ************/
   function setTemplate( name, data ) {
-    if ( ! hasTemplate( name ) ) { cache[ name ] = data; return true; } else { return false; }
+    if ( ! hasTemplate( name ) ) { cache[ name ] = data; return data; } else { return false; }
   }
 
   /************
