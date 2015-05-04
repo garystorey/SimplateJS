@@ -17,5 +17,7 @@
   "latedef": "nofunc",
   "quotmark": "single",
   "indent": 2,
-  "node": true
+  "node": true,
+  "qunit": true,
+  "browser":true
 }
