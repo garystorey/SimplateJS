@@ -29,6 +29,14 @@ Create a new template using the **set** method:
 ```javascript
 simplate.set( 'table.tr', '<tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>' );
 ```
+If you are creating the template for the first time and want to immediately access it:
+```javascript
+var tabletr = simplate.set( 'table.tr', '<tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>' );
+// tabletr = '<tr><td>{{firstname}}</td><td>{{lastname}}</td></tr>'
+// this works the same as the "basic" get method
+```
+
+
 Check to see if a template exists using the **has** method:
 
 ```javascript
@@ -37,8 +45,7 @@ simplate.has( 'table.tr');
 ```
 
 There are four ways to use the **get** method.
-
-Manipulate the template manually:
+Manipulate the template manually (basic):
 
 ```javascript
 var results = simplate.get('table.tr');
@@ -79,7 +86,7 @@ var results = simplate.get( '#tableRow', { 'firstname' : 'John', 'lastname' : 'D
 console.log( results );
 // <tr><td>John</td><td>Doe</td></tr>
 ```
-**NOTE:** As of v`0.4.0` unrecognized values are left in the template.This allows the templating functionality to be used recursively like so:
+**NOTE:** As of v`0.4.0` unrecognized values are left in the template. This allows the templating functionality to be used recursively like so:
 
 ```javascript
 // Assume data object from previous example
@@ -104,6 +111,7 @@ console.log( results );
  * Update documentation for use in Node/CommonJS
 
 ##More Info
+Original article I wrote about this:
 [http://garystorey.com/2015/02/24/super-simple-javascript-templating/](http://garystorey.com/2015/02/24/super-simple-javascript-templating/)
 
 ##License
