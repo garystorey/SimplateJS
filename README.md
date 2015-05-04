@@ -95,7 +95,7 @@ console.log( results );
 // ...
 // <tbody>
 // <table>
-
+```
 
 ##TODO's
  * ~~Add tests~~ Added QUnit tests
