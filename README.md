@@ -5,6 +5,7 @@ SimplateJS is a logicless templating system for JavaScript.  It weighs in at und
 * ``0.4.0`` :
     * Unrecognized values are now left in templates instead of removed
     * "get" by Id now verifys that the 'document' object exists before trying to select
+    * "set" method now returns the template 
 * ``0.3.0`` :
     * Added support for "get" by ID
     * Added automated QUnit test
@@ -74,7 +75,7 @@ Read the template from an HTML ID.
 </script>
 ```
 ```javascript
-var results = simplate.get( '#tableRow', {'firstname' : 'John', 'lastname' : 'Doe' } );
+var results = simplate.get( '#tableRow', { 'firstname' : 'John', 'lastname' : 'Doe' } );
 console.log( results );
 // <tr><td>John</td><td>Doe</td></tr>
 ```
@@ -82,11 +83,10 @@ console.log( results );
 
 ```javascript
 // Assume data object from previous example
-simplate.set('table','<table><thead>{{thead}}</thead><tbody>{{tbody}}</tbody></table>');
-simplate.set('table.thead','<tr><th>First Name</th><th>Last Name</th></tr>');
-var results = simplate.get('table.tr', data); // previous example <tr><td>John</td><td>Doe</td></tr> etc
-var thead = simplate.get('table.thead');
-results = simplate.get('table', { 'tbody' : results, 'thead': thead } );
+simplate.set( 'table', '<table><thead>{{thead}}</thead><tbody>{{tbody}}</tbody></table>' );
+var thead = simplate.set( 'table.thead', '<tr><th>First Name</th><th>Last Name</th></tr>' );
+var results = simplate.get( 'table.tr', data ); // previous example <tr><td>John</td><td>Doe</td></tr> etc
+results = simplate.get( 'table', { 'tbody' : results, 'thead': thead } );
 console.log( results );
 // <table>
 // <thead><tr><th>First Name</th><th>Last Name</th></tr></thead>
