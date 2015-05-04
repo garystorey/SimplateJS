@@ -78,6 +78,24 @@ var results = simplate.get( '#tableRow', {'firstname' : 'John', 'lastname' : 'Do
 console.log( results );
 // <tr><td>John</td><td>Doe</td></tr>
 ```
+**NOTE:** As of v`0.4.0` unrecognized values are left in the template.This allows the templating functionality to be used recursively like so:
+
+```javascript
+// Assume data object from previous example
+simplate.set('table','<table><thead>{{thead}}</thead><tbody>{{tbody}}</tbody></table>');
+simplate.set('table.thead','<tr><th>First Name</th><th>Last Name</th></tr>');
+var results = simplate.get('table.tr', data); // previous example <tr><td>John</td><td>Doe</td></tr> etc
+var thead = simplate.get('table.thead');
+results = simplate.get('table', { 'tbody' : results, 'thead': thead } );
+console.log( results );
+// <table>
+// <thead><tr><th>First Name</th><th>Last Name</th></tr></thead>
+// <tbody>
+// <tr><td>John</td><td>Doe</td></tr>
+// ...
+// <tbody>
+// <table>
+
 
 ##TODO's
  * ~~Add tests~~ Added QUnit tests
