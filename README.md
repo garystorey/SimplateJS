@@ -2,7 +2,9 @@
 SimplateJS is a logicless templating system for JavaScript.  It weighs in at under 1KB and can be used when the big guys are way to much overhead or you just need something... well, simple. There are no external dependencies.
 
 ##Changelog
-
+* ``0.4.0`` :
+    * Unrecognized values are now left in templates instead of removed
+    * "get" by Id now verifys that the 'document' object exists before trying to select
 * ``0.3.0`` :
     * Added support for "get" by ID
     * Added automated QUnit test
