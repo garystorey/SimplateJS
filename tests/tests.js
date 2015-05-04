@@ -22,7 +22,7 @@ QUnit.test( 'Testing SimplateJS: ', function( assert ) {
   assert.strictEqual( typeof simplate.has, 'function' , ' - HAS is available.' );
 
   /* Does the SET function work correctly? */
-  assert.strictEqual( simplate.set( 'div', testString ), true , ' - SET adds template.' );
+  assert.strictEqual( simplate.set( 'div', testString ), testString , ' - SET adds template.' );
 
   /* Does the HAS function work correctly? */
   assert.strictEqual( simplate.has( 'div' ), true , ' - HAS reads template.' );
@@ -33,10 +33,5 @@ QUnit.test( 'Testing SimplateJS: ', function( assert ) {
   assert.strictEqual( simplate.get( 'div', testObject ), testObjectString , ' - GET with data returns template correctly.' );
   assert.strictEqual( simplate.get( 'div', testArray ), testArrayString , ' - GET with data array returns template correctly.' );
   assert.strictEqual( simplate.get( '#testSimplate', testObject ), testObjectString , ' - GET from Element returns template correctly.' );
-
-
-  /* Does the Get function work correctly? */
-
-
 
 });
