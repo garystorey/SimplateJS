@@ -1,6 +1,5 @@
 var gulp    = require( 'gulp' ),
     uglify  = require( 'gulp-uglify' ),
-    concat  = require( 'gulp-concat' ),
     rename  = require( 'gulp-rename' ),
     jshint  = require( 'gulp-jshint' ),
     qunit   = require( 'gulp-qunit' ),
