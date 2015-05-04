@@ -1,5 +1,5 @@
 # SimplateJS
-SimplateJS is a logicless templating system for JavaScript.  It weighs in at under 1KB and can be used when the big guys are way to much overhead or you just need something... well, simple. There are no external dependencies.
+SimplateJS is a logicless templating system for JavaScript.  It weighs in at under 1KB and can be used when the big guys are way to much overhead or you just need something... well, simple.  There are no external dependencies. In ES2015 (ES6, ESNext), most of this functionality will be duplicated by [Template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings). 
 
 ##Changelog
 * ``0.4.0`` :
