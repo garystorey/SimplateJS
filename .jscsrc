@@ -103,7 +103,7 @@
   "safeContextKeyword": [ "that", "self", "_this" ],
   "validateAlignedFunctionParameters": false,
   "validateIndentation": 2,
-  //"validateLineBreaks": "LF",
+  "validateLineBreaks": "LF",
   "validateNewlineAfterArrayElements": { "maximum": 5 },
   "validateParameterSeparator": ", ",
   "validateQuoteMarks": { "mark": "'", "escape": true },
