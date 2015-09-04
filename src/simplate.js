@@ -56,15 +56,13 @@
    * parseTemplate ( string [, array/object ] );
   ************/
   function parseTemplate(template, data) {
-    var i = 0,
-        len = 0,
-        str = '';
+    var str = '';
 
     if (data.constructor === Array) {
-      len = data.length;
-      for (; i < len; i++) {
-        str += replaceValues(template, data[i]);
-      }
+      data.forEach(function(field) {
+        str += replaceValues(template, field);
+      });
+
     } else {
       str = replaceValues(template, data);
     }

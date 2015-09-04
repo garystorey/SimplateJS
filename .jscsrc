@@ -55,7 +55,7 @@
   "requireTrailingComma": false,
   "safeContextKeyword": [ "that", "self", "_this", "$this" ],
   "validateIndentation": 2,
-  "validateLineBreaks": "CRLF",
+  "validateLineBreaks": "LF",
   "validateNewlineAfterArrayElements": { "maximum": 5 },
   "validateParameterSeparator": ", ",
   "validateQuoteMarks": { "mark": "'", "escape": true },
