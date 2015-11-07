@@ -62,7 +62,6 @@
       data.forEach(function(field) {
         str += replaceValues(template, field);
       });
-
     } else {
       str = replaceValues(template, data);
     }
