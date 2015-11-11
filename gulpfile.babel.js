@@ -1,4 +1,3 @@
-
 'use strict';
 
 import gulp from 'gulp';
@@ -17,7 +16,7 @@ settings.js.src = './src/simplate.js';
 settings.js.dest = './dist';
 
 
-gulp.task( 'js', () => {
+gulp.task( 'build', () => {
   gulp.src( settings.js.src )
     .pipe( fix() )
     .pipe( hint() )
@@ -33,13 +32,13 @@ gulp.task( 'test', () => {
 });
 
 
-gulp.task( 'testAndjs', () => {
-  run('js', 'test');
+gulp.task( 'testAndbuild', () => {
+  run('build', 'test');
 });
 
 gulp.task( 'watch', () => {
   gulp.watch( settings.test.js , 'test' );
-  gulp.watch( settings.js.src , 'testAndjs' );
+  gulp.watch( settings.js.src , 'testAndbuild' );
 });
 
 gulp.task( 'default', 'watch' );
