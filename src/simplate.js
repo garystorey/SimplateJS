@@ -12,7 +12,7 @@ let simplate = (() => {
  */
   let replaceValues = (template, data) => {
     if (template) {
-      return template.replace(/{{([a-z_]+[a-z0-9_]*)}}/gi, function(ag, val) {
+      return template.replace(/{{([a-z_]+[a-z0-9_]*)}}/gi, function(val) {
         return data[val] ? data[val] : '{{' + val + '}}';
       });
     } else {
