@@ -4,9 +4,12 @@ let simplate = (() => {
 
   let templateCache = [];
 
-  /************
-   * replaceValues ( string , object );
-  ************/
+ /**
+ *  Private function.
+ *  replaces all instances of data in string.
+ * @param {string} template - The string to search through.
+ * @param {string} data - The data to put in the string
+ */
   let replaceValues = (template, data) => {
     if (template) {
       return template.replace(/{{([a-z_]+[a-z0-9_]*)}}/gi, function(ag, val) {
@@ -17,9 +20,12 @@ let simplate = (() => {
     }
   };
 
-  /************
-   * parseTemplate ( string [, array/object ] );
-  ************/
+ /**
+ * Private function
+ * Replaces data values in a given  template strinng
+ * @param {string} template - The string to search through.
+ * @param {array} data - The information to put in the string.
+ */
   let parseTemplate = (template,data) => {
     let str = '';
     if (data.constructor === Array) {
@@ -33,28 +39,38 @@ let simplate = (() => {
     return str;
   };
 
-  /************
-  * getDomElement ( string );
-  ************/
+ /**
+ * Private function
+ * gets the text from an element in the DOM by Id
+ * @param {string} name - The id of the DOM element.
+ */
   let getDomElement = (name) => {
     name = name.replace('#', '') + '';
     return (document && name) ? document.getElementById(name).innerText : false;
   };
 
-  /************
-  * hasTemplate ( string );
-  ************/
+  /**
+ * Public  Method
+ * checks to see if the template exists or not
+ * @param {string} name - The id/name of the template.
+ */
   let hasTemplate = (name) => !!(templateCache[name]);
 
-  /************
-   * setTemplate ( string, string );
-  ************/
-  let setTemplate = (name, data) => (!hasTemplate) ? templateCache[name] = data : false;
+  /**
+ * Public  Method
+ * Creates a template from a given string
+ * @param {string} name - The id/name of the template.
+ * @param {string} data - The template string.
+ */
+let setTemplate = (name, data) => (!hasTemplate) ? templateCache[name] = data : false;
 
 
-  /************
-   * getTemplate ( string [, array/object ] );
-  ************/
+/**
+ * Public  Method
+ * Retrieve and parse a template
+ * @param {string} name - The id/name of the template.
+ * @param {array} data - The information to put in the string.
+ */
   let getTemplate = (name,data) => {
     let tmpl = ( name.indexOf('#')=== 0 ) ?
       getDomElement(name) : (templateCache[name] || false);
