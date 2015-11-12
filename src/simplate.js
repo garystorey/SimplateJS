@@ -49,8 +49,7 @@ let simplate = (() => {
   /************
    * setTemplate ( string, string );
   ************/
-  let setTemplate = (name, data) =>
-    (!hasTemplate) ? templateCache[name] = data : false;
+  let setTemplate = (name, data) => (!hasTemplate) ? templateCache[name] = data : false;
 
 
   /************
