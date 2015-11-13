@@ -1,4 +1,4 @@
-let simplate = (() => {
+;(() => {
 
   'use strict';
 
@@ -77,7 +77,7 @@ let setTemplate = (name, data) => (!hasTemplate) ? templateCache[name] = data : 
     return (data && parseTemplate(tmpl, data)) || tmpl;
   };
 
-  return {
+window.simplate = {
     get:getTemplate,
     set:setTemplate,
     has:hasTemplate,
