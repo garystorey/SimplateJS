@@ -1,43 +1,46 @@
-var gulp    = require( 'gulp' ),
-    uglify  = require( 'gulp-uglify' ),
-    rename  = require( 'gulp-rename' ),
-    jshint  = require( 'gulp-jshint' ),
-    qunit   = require( 'gulp-qunit' ),
-    plumbr  = require( 'gulp-plumber' ),
-    run     = require( 'run-sequence');
+//require('babel-core/register');
+//require('./gulpfile.babel.js');
 
-var renameOptions = { suffix : '.min' };
+var gulp = require( 'gulp' ),
+    min = require( 'gulp-uglify' ),
+    ren = require( 'gulp-rename' ),
+    hint = require( 'gulp-jshint' ),
+    test = require( 'gulp-qunit' ),
+    fix = require( 'gulp-plumber' ),
+    run = require( 'run-sequence');
+
+var renOptions = { suffix : '.min' };
 
 var testpage = './tests/test.html',
     testjs = './tests/tests.js';
 
-var jssource        = './src/simplate.js',
-    jsdestination   = './dist';
+var jssource = './src/simplate.js',
+    jsdestination = './dist';
 
-gulp.task( 'js', function() {
+gulp.task( 'build', function() {
   return gulp.src( jssource )
-    .pipe( plumbr() )
-    .pipe( jshint() )
-    .pipe( jshint.reporter( 'default' ) )
+    .pipe( fix() )
+    .pipe( hint() )
+    .pipe( hint.reporter( 'default' ) )
     .pipe( gulp.dest( jsdestination ) )
-    .pipe( uglify() )
-    .pipe( rename( renameOptions ) )
+    .pipe( min() )
+    .pipe( ren( renOptions ) )
     .pipe( gulp.dest( jsdestination ) )
 });
 
 gulp.task( 'test', function() {
   return gulp.src( testpage )
-        .pipe( qunit() );
+        .pipe( test() );
 });
 
 
-gulp.task( 'testAndjs', function() {
-  run('js','test');
+gulp.task( 'buildtest', function() {
+  run('build','test');
 });
 
 gulp.task( 'watch', function() {
   gulp.watch( testjs , ['test'] );
-  gulp.watch( jssource , ['testAndjs'] );
+  gulp.watch( jssource , ['buildtest'] );
 });
 
 gulp.task( 'default', ['watch']);
