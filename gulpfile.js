@@ -1,10 +1,7 @@
-//require('babel-core/register');
-//require('./gulpfile.babel.js');
-
 var gulp = require( 'gulp' ),
     min = require( 'gulp-uglify' ),
     ren = require( 'gulp-rename' ),
-    hint = require( 'gulp-jshint' ),
+    lint = require( 'gulp-eslint' ),
     test = require( 'gulp-qunit' ),
     fix = require( 'gulp-plumber' ),
     run = require( 'run-sequence');
@@ -20,8 +17,9 @@ var jssource = './src/simplate.js',
 gulp.task( 'build', function() {
   return gulp.src( jssource )
     .pipe( fix() )
-    .pipe( hint() )
-    .pipe( hint.reporter( 'default' ) )
+    .pipe( lint() )
+    .pipe( lint.format() )
+    .pipe( lint.failAfterError() )
     .pipe( gulp.dest( jsdestination ) )
     .pipe( min() )
     .pipe( ren( renOptions ) )
@@ -33,14 +31,13 @@ gulp.task( 'test', function() {
         .pipe( test() );
 });
 
-
 gulp.task( 'buildtest', function() {
   run('build','test');
 });
 
 gulp.task( 'watch', function() {
   gulp.watch( testjs , ['test'] );
-  gulp.watch( jssource , ['buildtest'] );
+  gulp.watch( jssource , ['test','build'] );
 });
 
 gulp.task( 'default', ['watch']);
