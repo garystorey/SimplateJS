@@ -1,3 +1,4 @@
+/* global QUnit simplate */
 
 QUnit.test( 'Testing SimplateJS: ', function( assert ) {
  'use strict';
@@ -12,6 +13,8 @@ QUnit.test( 'Testing SimplateJS: ', function( assert ) {
   var testArray = [ { 'class' : 'test1' }, { 'class' : 'test2' }  ];
   var testArrayString = '<div class="test1"></div><div class="test2"></div>';
 
+  var zeroTestObject = { 'class' : 0 };
+  var zeroTestString = '<div class="0"></div>'
 
   /* Has SimplateJS been initialized? */
   assert.strictEqual( typeof simplate, 'object', ' - Simplate is available.' );
@@ -32,6 +35,8 @@ QUnit.test( 'Testing SimplateJS: ', function( assert ) {
   assert.strictEqual( simplate.get( 'div', failTestObject ), testString , ' - GET (basic) returns template without replacing values.' );
   assert.strictEqual( simplate.get( 'div', testObject ), testObjectString , ' - GET with data returns template correctly.' );
   assert.strictEqual( simplate.get( 'div', testArray ), testArrayString , ' - GET with data array returns template correctly.' );
+  assert.strictEqual( simplate.get( 'div', zeroTestObject ), zeroTestString , ' - GET with zero-based data returns template correctly.' );
+
   assert.strictEqual( simplate.get( '#testSimplate', testObject ), testObjectString , ' - GET from Element returns template correctly.' );
 
 });

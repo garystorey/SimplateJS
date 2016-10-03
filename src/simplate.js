@@ -1,86 +1,89 @@
-;(() => {
+(function ( root, factory ) {
+  'use strict';
+    /* eslint-disable no-undef */
+  if ( typeof define === 'function' && define.amd ) {
+    define( factory );
+  } else if( typeof module === 'object' && module.exports ) {
+    module.exports = ( root.simplate = factory() );
+  } else {
+    root.simplate = factory();
+  }
+  /* eslint-enable no-undef */
+
+}( this, function() {
 
   'use strict';
 
-  let templateCache = [];
+  var cache = [];
 
- /**
- *  Private function.
- *  replaces all instances of data in string.
- * @param {string} template - The string to search through.
- * @param {string} data - The data to put in the string
- */
-  let replaceValues = (template, data) => {
-    if (template) {
-      return template.replace(/{{([a-z_]+[a-z0-9_]*)}}/gi, function(val) {
-        return data[val] ? data[val] : '{{' + val + '}}';
+  /************
+   * setTemplate ( string, string );
+  ************/
+  function setTemplate( name, data ) {
+    if ( ! hasTemplate( name ) ) { cache[ name ] = data; return data; } else { return false; }
+  }
+
+  /************
+   * getTemplate ( string [, array/object ] );
+  ************/
+  function getTemplate( name , data ){
+    var tmpl =  (name.indexOf('#') === 0 ) ?
+                getDomElement( name ) :
+                ( cache[name] || '' );
+
+    return ( data && parseTemplate( tmpl, data ) ) || tmpl;
+  }
+
+  function getDomElement( name ) {
+    name = name.replace('#','') + '';
+    /* eslint-disable no-undef */
+    if ( document && name ) {
+      return document.getElementById( name ).innerText;
+    /* eslint-enable no-undef */
+    }
+    return '';
+  }
+
+  /************
+  * hasTemplate ( string );
+  ************/
+  function hasTemplate( name ) {
+    return !!( cache[ name ] );
+  }
+
+  /************
+   * parseTemplate ( string [, array/object ] );
+  ************/
+  function parseTemplate( template, data ) {
+    var i = 0, len, str='';
+    if ( data.constructor === Array ) {
+      len = data.length;
+      for(; i < len; i++){
+        str += replaceValues( template, data[i] );
+      }
+    } else {
+      str = replaceValues( template, data );
+    }
+    return str;
+  }
+
+  /************
+   * replaceValues ( string , object );
+  ************/
+  function replaceValues( template, data ) {
+    if ( template ){
+      return template.replace(/{{([a-z_]+[a-z0-9_]*)}}/gi, function( tag, val ) {
+        return  (data[ val ] || data[val] === 0) ? data[ val ]  : '{{'+val+'}}';
       });
     } else {
       return '';
     }
+  }
+
+  return {
+    get : getTemplate,
+    set : setTemplate,
+    has : hasTemplate
   };
 
- /**
- * Private function
- * Replaces data values in a given  template strinng
- * @param {string} template - The string to search through.
- * @param {array} data - The information to put in the string.
- */
-  let parseTemplate = (template,data) => {
-    let str = '';
-    if (data.constructor === Array) {
-      data.forEach(function(field) {
-        str += replaceValues(template, field);
-      });
-    } else {
-      str = replaceValues(template, data);
-    }
-
-    return str;
-  };
-
- /**
- * Private function
- * gets the text from an element in the DOM by Id
- * @param {string} name - The id of the DOM element.
- */
-  let getDomElement = (name) => {
-    name = name.replace('#', '') + '';
-    return (document && name) ? document.getElementById(name).innerText : false;
-  };
-
-  /**
- * Public  Method
- * checks to see if the template exists or not
- * @param {string} name - The id/name of the template.
- */
-  let hasTemplate = (name) => !!(templateCache[name]);
-
-  /**
- * Public  Method
- * Creates a template from a given string
- * @param {string} name - The id/name of the template.
- * @param {string} data - The template string.
- */
-let setTemplate = (name, data) => (!hasTemplate) ? templateCache[name] = data : false;
-
-
-/**
- * Public  Method
- * Retrieve and parse a template
- * @param {string} name - The id/name of the template.
- * @param {array} data - The information to put in the string.
- */
-  let getTemplate = (name,data) => {
-    let tmpl = ( name.indexOf('#')=== 0 ) ?
-      getDomElement(name) : (templateCache[name] || false);
-    return (data && parseTemplate(tmpl, data)) || tmpl;
-  };
-
-window.simplate = {
-    get:getTemplate,
-    set:setTemplate,
-    has:hasTemplate,
-  };
-
-})();
+}));
