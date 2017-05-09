@@ -18,6 +18,9 @@ There are no external dependencies. In ES2015 (ES6, ESNext), most of this functi
 * ``0.1.0`` :  Initial commit
 
 ## Examples
+
+For complete documentation, you can [check out the wiki](https://github.com/garystorey/SimplateJS/wiki).
+
 Link to SimplateJS in your HTML:
 
 ```javascript
