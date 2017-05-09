@@ -3,7 +3,7 @@ SimplateJS is a logicless templating system for JavaScript.  It weighs in at und
 There are no external dependencies. In ES2015 (ES6, ESNext), most of this functionality will be duplicated by 
 [Template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings). 
 
-##Changelog
+## Changelog
 * ``0.4.0`` :
     * Unrecognized values are now left in templates instead of removed
     * "get" by Id now verifys that the 'document' object exists before trying to select
@@ -17,7 +17,7 @@ There are no external dependencies. In ES2015 (ES6, ESNext), most of this functi
     * Added QUnit tests
 * ``0.1.0`` :  Initial commit
 
-##Examples
+## Examples
 Link to SimplateJS in your HTML:
 
 ```javascript
@@ -106,15 +106,15 @@ console.log( results );
 // <table>
 ```
 
-##TODO's
+## TODO's
  * ~~Add tests~~ Added QUnit tests
  * ~~Add CommonJS , AMD support~~  Added support via UMD
  * Publish on NPM/Bower
  * Update documentation for use in Node/CommonJS
 
-##More Info
+## More Info
 Original article I wrote about this:
 [http://garystorey.com/2015/02/24/super-simple-javascript-templating/](http://garystorey.com/2015/02/24/super-simple-javascript-templating/)
 
-##License
+## License
 Released under MIT license
