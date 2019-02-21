@@ -5,6 +5,10 @@ There are no external dependencies. Some of this funcitonality can be duplicated
 
 ## Changelog
 
+* ``0.6.0`` :
+  * Now works when installed via npm.
+* ``0.5.0`` :
+  * Initial try at adding to npm... which failed miserably.
 * ``0.4.0`` :
   * Unrecognized values are now left in templates instead of removed
   * "get" by Id now verifys that the 'document' object exists before trying to select
